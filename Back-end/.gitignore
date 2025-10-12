@@ -52,6 +52,7 @@ Thumbs.db
 *.sqlite-journal
 *.db-shm
 *.db-wal
+data/
 
 # Prisma (optional: if using SQLite for dev)
 prisma/dev.db

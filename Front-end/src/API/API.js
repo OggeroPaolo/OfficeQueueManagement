@@ -34,6 +34,7 @@ async function getNewTicket(serviceTag) {
   }
 }
 
+// Get the next ticket to serve for the officer at the given counter
 async function getNextTicket(counterNumber) {
   const response = await fetch(URI + `/tickets/next`, {
     method: "POST",
@@ -43,6 +44,13 @@ async function getNextTicket(counterNumber) {
 
     body: JSON.stringify({ counterNumber: counterNumber }),
   });
+
+  if (response.ok) {
+    const ticket = await response.json();
+    return ticket.ticket_code;
+  } else {
+    throw new Error("Failed to create new ticket");
+  }
 }
 
 export { getServices, getNewTicket, getNextTicket };

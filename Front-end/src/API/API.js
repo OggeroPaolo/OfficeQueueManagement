@@ -1,4 +1,4 @@
-const URI = "http://localhost:3001/api";
+const URI = "http://localhost:3000";
 
 async function getServices() {
   try {
@@ -25,3 +25,5 @@ async function saveTicket(serviceId) {
     body: JSON.stringify({ id: serviceId }),
   });
 }
+
+export { getServices, saveTicket };

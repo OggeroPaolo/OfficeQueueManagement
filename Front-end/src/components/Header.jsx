@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { Outlet } from "react-router";
 
 function Header() {
   return (
@@ -11,6 +12,7 @@ function Header() {
           </Nav>
         </Container>
       </Navbar>
+      <Outlet />
     </>
   );
 }

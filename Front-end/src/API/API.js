@@ -1,5 +1,6 @@
 const URI = "http://localhost:3000";
 
+// Fetch the list of services from the backend
 async function getServices() {
   try {
     const response = await fetch(URI + "/services");
@@ -14,7 +15,7 @@ async function getServices() {
   }
 }
 
-
+// Save a new ticket for the given service
 async function getNewTicket(serviceTag) {
   const response = await fetch(URI + `/tickets/new`, {
     method: "POST",
@@ -24,6 +25,13 @@ async function getNewTicket(serviceTag) {
 
     body: JSON.stringify({ serviceTag: serviceTag }),
   });
+
+  if (response.ok) {
+    const ticket = await response.json();
+    return ticket.ticket_code;
+  } else {
+    throw new Error("Failed to create new ticket");
+  }
 }
 
 async function getNextTicket(counterNumber) {

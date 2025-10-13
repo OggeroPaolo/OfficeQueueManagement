@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { getServices, getNewTicket } from "../API/API.js";
-import { Button, Spinner, Container, Row, Col } from "react-bootstrap";
+import { Button, Spinner, Container, Row, Col, Card } from "react-bootstrap";
 
 function GetTicket() {
   const [services, setServices] = useState([]);
   const [selService, setSelService] = useState(false);
+  const [ticketCode, setTicketCode] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,10 +18,10 @@ function GetTicket() {
     loadServices();
   }, []);
 
-  const selectService = async (serviceId) => {
-    await getNewTicket(serviceId);
-    // finish api function so that the code of the ticket can be shown
+  const selectService = async (serv) => {
+    const ticket = await getNewTicket(serv);
     setSelService(true);
+    setTicketCode(ticket);
   };
 
   // Split services into pairs for two per row
@@ -31,7 +32,7 @@ function GetTicket() {
 
   return (
     <>
-      <h1 className='text-center mt-5 mb-5'>
+      <h1 className='text-center mt-4 mb-5'>
         Select the service you need today
       </h1>
       {loading ? (
@@ -58,7 +59,29 @@ function GetTicket() {
         </Container>
       )}
       {selService && (
-        <h3>Thank you, wait for your ticket number to be called</h3>
+        <>
+          <Container className='mt-5 mb-5'>
+            <Row className='justify-content-center'>
+              <Col xs='auto'>
+                <Card
+                  body
+                  className='text-center'
+                  style={{
+                    borderWidth: "3px",
+                    borderStyle: "solid",
+                  }}
+                >
+                  <span style={{ fontSize: "3rem", fontWeight: "bold" }}>
+                    {ticketCode}
+                  </span>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+          <h3 className='text-center mt-4 mb-4'>
+            Thank you, wait for your ticket number to be called
+          </h3>
+        </>
       )}
     </>
   );

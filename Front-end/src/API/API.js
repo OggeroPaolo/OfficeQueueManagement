@@ -15,15 +15,15 @@ async function getServices() {
 }
 
 // TODO
-async function saveTicket(serviceId) {
-  const response = await fetch(URI + `/tickets`, {
+async function getNewTicket(serviceTag) {
+  const response = await fetch(URI + `/tickets/new`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
 
-    body: JSON.stringify({ id: serviceId }),
+    body: JSON.stringify({ serviceTag: serviceTag }),
   });
 }
 
-export { getServices, saveTicket };
+export { getServices, getNewTicket };

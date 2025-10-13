@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getServices, saveTicket } from "../API/API.js";
+import { getServices, getNewTicket } from "../API/API.js";
 import { Button, Spinner, Container, Row, Col } from "react-bootstrap";
 
 function GetTicket() {
@@ -18,7 +18,7 @@ function GetTicket() {
   }, []);
 
   const selectService = async (serviceId) => {
-    await saveTicket(serviceId);
+    await getNewTicket(serviceId);
     // finish api function so that the code of the ticket can be shown
     setSelService(true);
   };

@@ -14,7 +14,7 @@ async function getServices() {
   }
 }
 
-// TODO
+
 async function getNewTicket(serviceTag) {
   const response = await fetch(URI + `/tickets/new`, {
     method: "POST",
@@ -26,4 +26,15 @@ async function getNewTicket(serviceTag) {
   });
 }
 
-export { getServices, getNewTicket };
+async function getNextTicket(counterNumber) {
+  const response = await fetch(URI + `/tickets/next`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({ counterNumber: counterNumber }),
+  });
+}
+
+export { getServices, getNewTicket, getNextTicket };

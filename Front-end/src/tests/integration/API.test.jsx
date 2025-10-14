@@ -13,7 +13,7 @@ describe("API module", () => {
     vi.restoreAllMocks();
   });
 
-  // ✅ getServices tests
+  // getServices tests
   test("getServices() returns list of services when response is OK", async () => {
     const mockServices = [
         { id: 1, tag_name: "Shipping" },
@@ -35,7 +35,7 @@ describe("API module", () => {
     await expect(getServices()).rejects.toThrow("Failed to fetch services");
   });
 
-  // ✅ getNewTicket tests
+  // getNewTicket tests
   test("getNewTicket() returns ticket code when success", async () => {
     global.fetch.mockResolvedValueOnce({
       ok: true,

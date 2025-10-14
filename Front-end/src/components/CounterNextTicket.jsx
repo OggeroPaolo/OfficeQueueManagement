@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Spinner, Container, Button, Card, Row, Col } from "react-bootstrap";
 import { getNextTicket } from "../API/API";
+import { useParams } from "react-router";
 
 function CounterNextTicket() {
   const [counterNumber, setCounterNumber] = useState("Counter 1");
@@ -8,9 +9,13 @@ function CounterNextTicket() {
   const [ticketCode, setTicketCode] = useState("");
   const [newTicket, setNewTicket] = useState(false);
 
+  const params = useParams();
+  const counter = params.cnt;
+
   useEffect(() => {
     const loadData = async () => {
       setLoading(false);
+      setCounterNumber(counter);
     };
 
     loadData();

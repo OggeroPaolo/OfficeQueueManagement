@@ -1,23 +1,21 @@
 import request from "supertest";
 import express from "express";
-import router from "../../src/routes/index.js"; // adjust if needed
-import { getDatabase } from "../../src/config/database.js";
+import router from "../../src/routes/index.js";
+import { initializeDatabase } from "../../src/db/init.js";
+import { closeDatabase } from "../../src/config/database.js";
 import TicketDAO from "../../src/dao/ticketDao.js";
-import { beforeAll, afterAll, beforeEach, describe, it, expect } from "vitest";
+import { beforeAll, afterAll, describe, it, expect } from "vitest";
 
 let app: express.Express;
-let db: any;
 
 beforeAll(async () => {
-  process.env.DB_PATH = ":memory:"; // in-memory SQLite
-  db = await getDatabase();
 
+  await initializeDatabase();
 
   app = express();
   app.use(express.json());
   app.use("/api", router);
 
-  // Initialize DAO with db
   const ticketDao = new TicketDAO();
 
   // Add a new ticket
@@ -26,7 +24,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await db.close();
+  await closeDatabase();
 });
 
 describe("POST /tickets/next", () => {
@@ -53,7 +51,3 @@ describe("POST /tickets/next", () => {
     expect(res.status).toBe(204);
   });
 });
-
-
-
-// 40 minutes

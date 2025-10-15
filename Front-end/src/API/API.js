@@ -45,11 +45,13 @@ async function getNextTicket(counterNumber) {
     body: JSON.stringify({ counterNumber: counterNumber }),
   });
 
-  if (response.ok) {
+  if (response.status === 200) {
     const ticket = await response.json();
     return ticket.ticket_code;
+  } else if(response.status === 204) {
+    return "NO TICKETS ARE WAITING"
   } else {
-    throw new Error("Failed to create new ticket");
+    throw new Error("Failed to get next ticket");
   }
 }
 

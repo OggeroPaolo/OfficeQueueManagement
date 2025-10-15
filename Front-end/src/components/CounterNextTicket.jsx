@@ -50,7 +50,7 @@ function CounterNextTicket() {
                         borderStyle: "solid",
                       }}
                     >
-                      <span style={{ fontSize: "3rem", fontWeight: "bold" }}>
+                      <span style={{ fontSize: "3rem", fontWeight: "bold" }} className={ ticketCode === "NO TICKETS ARE WAITING" ? "text-danger" : "" }>
                         {ticketCode}
                       </span>
                     </Card>

@@ -18,12 +18,7 @@ beforeAll(async () => {
   app.use(express.json());
   app.use("/api", router);
 
-
-  // Insert a service for testing
-  await db.run(
-    `INSERT INTO services (tag_name, service_time) VALUES (?, ?)`,
-    ["Shipping", 10]
-  );
+  db = await getDatabase();
 });
 
 afterAll(async () => {

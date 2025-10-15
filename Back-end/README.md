@@ -22,6 +22,8 @@ Important notes!
 
 - DB_PATH= //optional it has deafult value
 
+- During testing, the default .env file is replaced by .env.tests. If tests require different environment variables (e.g., different database path), define them in the .env.tests file instead of .env.
+
 --------------------------------------------------------------------
 
 

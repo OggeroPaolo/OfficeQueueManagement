@@ -19,6 +19,7 @@ describe("TicketDAO Integration Test Suit", () => {
   // ------------------------------
   describe("Utility functions", () => {
     it("sequenceLetters generates correct letter sequences", () => {
+      
       // @ts-ignore to access private method
       const seq = dao.sequenceLetters;
 

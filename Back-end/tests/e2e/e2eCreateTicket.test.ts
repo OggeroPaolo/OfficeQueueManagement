@@ -1,31 +1,33 @@
 import request from "supertest";
 import express from "express";
-import router from "../../src/routes/index.js"; // adjust if needed
+import router from "../../src/routes/index.js"; 
 import { getDatabase } from "../../src/config/database.js";
 import { beforeAll, afterAll, describe, it, expect } from "vitest";
+import { initializeDatabase } from "../../src/db/init.js";
+import { closeDatabase } from "../../src/config/database.js";
 
 let app: express.Express;
 let db: any;
 
 
 beforeAll(async () => {
-  // Use in-memory SQLite
-  process.env.DB_PATH = ":memory:";
-  db = await getDatabase();
+
+  await initializeDatabase();
+
+  app = express();
+  app.use(express.json());
+  app.use("/api", router);
+
 
   // Insert a service for testing
   await db.run(
     `INSERT INTO services (tag_name, service_time) VALUES (?, ?)`,
     ["Shipping", 10]
   );
-
-  app = express();
-  app.use(express.json());
-  app.use("/api", router);
 });
 
 afterAll(async () => {
-  await db.close();
+  await closeDatabase();
 });
 
 describe("POST /tickets/new", () => {

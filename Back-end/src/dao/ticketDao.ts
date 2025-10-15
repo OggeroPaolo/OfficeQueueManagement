@@ -27,12 +27,11 @@ class TicketDAO {
     const countSQL = `
     SELECT COUNT(*) as count
     FROM tickets
-    WHERE DATE(created_at) = DATE(?)
   `;
     const today = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
-    const result = await getOne<{ count: number }>(countSQL, [today]);
+    const result = await getOne<{ count: number }>(countSQL);
     if (!result) {
-      throw new Error('Failed to count tickets created today');
+      throw new Error("Failed to count tickets");
     }
     const count = result.count;
     const letterPart = this.sequenceLetters(Math.floor(count / 100));

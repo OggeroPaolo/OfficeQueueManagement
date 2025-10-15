@@ -65,3 +65,98 @@ Important notes!
   "error": "Database connection failed"
 }
 ```
+
+### Tickets
+
+**POST `/tickets/new`**
+
+- **Request Parameters:** None
+
+- **Request Body content:**
+```json
+{
+    "serviceTag": "service1"
+}
+```
+
+- **Success Response (201 OK):**
+```json
+{
+    "id": 27,
+    "ticket_code": "TKT-A26",
+    "service_id": 1,
+    "status": "waiting"
+}
+```
+
+- **Error Response (500 Internal Server Error):**
+```json
+{
+  "error": "Database connection failed"
+}
+```
+```json
+{
+  "error": "Failed to retrieve the new ticket after insertion"
+}
+```
+```json
+{
+  "error": "Failed to count tickets"
+}
+```
+- **Error Response (400 Bad Request):**
+```json
+{
+  "error": "Missing serviceTag in request body"
+}
+```
+```json
+{
+  "error": "Service with tag 'service1' not found"
+}
+```
+**POST `/tickets/next`**
+
+- **Request Parameters:** None
+
+- **Request Body content:**
+```json
+{
+    "counterNumber": "Counter 1"
+}
+```
+
+- **Success Response (201 OK):**
+```json
+{
+    "id": 27,
+    "ticket_code": "TKT-A26",
+    "service_id": 1,
+    "status": "called",
+    "called_at": "2025-10-15 13:44:33"
+}
+```
+
+- **Error Response (500 Internal Server Error):**
+```json
+{
+  "error": "Database connection failed"
+}
+```
+```json
+{
+  "error": "Error finalizing called ticket for counter Counter 1: {error_message}"
+}
+```
+- **Error Response (400 Bad Request):**
+```json
+{
+  "error": "Missing counterNumber in request body"
+}
+```
+```json
+{
+  "error": "Counter with number 'Counter 1' not found"
+}
+```

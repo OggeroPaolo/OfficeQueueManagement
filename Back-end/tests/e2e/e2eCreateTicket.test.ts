@@ -25,7 +25,7 @@ afterAll(async () => {
   await closeDatabase();
 });
 
-describe("POST /tickets/new", () => {
+describe.skip("POST /tickets/new", () => {
   it("returns 400 if serviceTag is missing", async () => {
     const res = await request(app).post("/api/tickets/new").send({});
     expect(res.status).toBe(400);

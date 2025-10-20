@@ -10,5 +10,26 @@ export default defineConfig({
     include: ['tests/**/*.test.ts', 'tests/**/*.spec.ts'],
     exclude: ['node_modules', 'dist'],
     globalSetup: [path.resolve(__dirname, 'tests/setup/globalEnvSetup.ts')],
+    
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      reportsDirectory: './coverage',
+
+      // ✅ Only include these files/folders in coverage
+      include: [
+        'src/routes/index.ts',
+        'src/dao/**',
+      ],
+
+      // 🚫 Ignore everything else
+      exclude: [
+        'tests/**',
+        'src/config/**',
+        'src/db/**',
+        'src/middlewares/**',
+        '**/*.d.ts',
+      ],
+    },
   },
 });

@@ -55,17 +55,18 @@ describe("API module", () => {
   // ✅ getNextTicket tests
   test("getNextTicket() returns ticket code when success", async () => {
     global.fetch.mockResolvedValueOnce({
-      ok: true,
+      status: 200, 
       json: async () => ({ ticket_code: "B001" }),
     });
 
-    const result = await getNextTicket(1);
+    const result = await getNextTicket("Counter 1");
+
     expect(result).toBe("B001");
     expect(global.fetch).toHaveBeenCalledWith(`${URI}/tickets/next`, expect.any(Object));
   });
 
   test("getNextTicket() throws error when response is not OK", async () => {
     global.fetch.mockResolvedValueOnce({ ok: false });
-    await expect(getNextTicket(1)).rejects.toThrow("Failed to create new ticket");
+    await expect(getNextTicket(1)).rejects.toThrow("Failed to get next ticket");
   });
 });

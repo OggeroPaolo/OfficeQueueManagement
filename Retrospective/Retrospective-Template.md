@@ -24,7 +24,7 @@ sections:
 
   hours planned: 57h vs. hours done: 54h 55m
 
-**Remember**a story is done ONLY if it fits the Definition of Done:
+**Remember** a story is done ONLY if it fits the Definition of Done:
  
 - Unit Tests passing: 18
 - Code review completed: 3h 20m
@@ -82,28 +82,31 @@ sections:
 
 - What did go wrong in the sprint?
 
-  We should have spend more time designing the APIs before the actual development stared
+  We should have spent more time designing the APIs before the actual development started
 
-  We should have had test sessions to test the product before the presentation
+  We should have had test sessions to test the product more frequently
 
 - What caused your errors in estimation (if any)?
 
-  Error was caused by inexperiece in the estimation and in particular we underestimated the time for the actual code development, whereas we overestimated the testing time
+  Error was caused by inexperiece in the estimation and in particular we underestimated coding time and slightly overestimated testing time
 
 - What lessons did you learn (both positive and negative) in this sprint?
 
-  Based on the feedback of the product owner we need to spend more time in UI design
+  We learned how to collaborate more effectively and to use the tools required for the project
 
 - Which improvement goals set in the previous retrospective were you able to achieve? 
 
-
+  This was our first project, but we achieved our goal of delivering a functional app and working well as a team
   
 - Which ones you were not able to achieve? Why?
 
+  /
+
 - Improvement goals for the next sprint and how to achieve them (technical tasks, team coordination, etc.)
 
-  > Propose one or two
+  - Plan more time for design
+  - Perform intermediate manual testing during development (so features get tested more frequently)
 
 - One thing you are proud of as a Team!!
 
-  A working piece of software with simple but effective UI design was developed
+  We built a working, user-friendly app and collaborated effectively on our first group project.

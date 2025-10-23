@@ -14,7 +14,7 @@ sections:
 
 - Number of stories committed vs. done
 
-  Stories committed: 29 vs. Stories done: 29 
+  Stories committed: 2 vs. Stories done: 2 
 
 - Total points committed vs. done 
 

@@ -59,7 +59,7 @@ sections:
 
     $$\frac{1}{n}\sum_i^n \left| \frac{spent_{task_i}}{estimation_task_i}-1 \right| $$
 
-    = 0,03132
+    = 0.1204
   
 ## QUALITY MEASURES 
 
